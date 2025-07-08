@@ -6,12 +6,17 @@ def get_weather_data(city):
     try:
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=imperial"
         response = requests.get(url)
-        data = response.json()
         if response.status_code != 200:
             return None
+        data = response.json()
         return {
+            "city": city,
             "temp": data["main"]["temp"],
-            "description": data["weather"][0]["description"]
+            "feels_like": data["main"]["feels_like"],
+            "humidity": data["main"]["humidity"],
+            "wind_speed": data["wind"]["speed"],
+            "description": data["weather"][0]["description"],
+            "icon": data["weather"][0]["icon"]
         }
     except Exception as e:
         print(f"API Error: {e}")

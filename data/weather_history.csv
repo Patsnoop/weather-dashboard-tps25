@@ -1,8 +1,9 @@
-new york city,89.1,scattered clouds
-new york city,89.1,scattered clouds
-"Houston, texas",86.13,broken clouds
-Buffalo,72.3,overcast clouds
-Buffalo,72.3,overcast clouds
-boston,88.93,scattered clouds
-orlando,86.65,overcast clouds
-Springfield,78.04,few clouds
+city,temp,feels_like,humidity,wind_speed,description
+New York,89.53,99.1,61,8.05,clear sky
+New York,90.21,99.61,59,8.05,clear sky
+San diego,66.29,66.61,85,8.05,broken clouds
+Canada,77.94,79,76,8.66,broken clouds
+Ottawa,71.24,71.69,77,1.41,overcast clouds
+Houston,88,100.6,74,10.36,broken clouds
+Pittsburgh,72.55,73.98,95,9.22,overcast clouds
+Des Moines,73.76,74.5,78,10.36,overcast clouds

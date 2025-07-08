@@ -12,28 +12,36 @@ class WeatherStatistics:
             DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
             with open(DATA_FILE, 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['city', 'temp', 'description'])
+                writer.writerow(['city', 'temp', 'feels_like', 'humidity', 'wind_speed', 'description'])
 
-    def save_weather(self, city, temp, description):
+    def save_weather(self, data):
         with open(DATA_FILE, 'a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([city, temp, description])
+            writer.writerow([
+                data['city'],
+                data['temp'],
+                data['feels_like'],
+                data['humidity'],
+                data['wind_speed'],
+                data['description']
+            ])
 
     def get_statistics(self):
         temps = []
-        weather_types = {}
+        humidity = []
+        wind = []
         with open(DATA_FILE, 'r') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 temps.append(float(row['temp']))
-                desc = row['description']
-                weather_types[desc] = weather_types.get(desc, 0) + 1
+                humidity.append(int(row['humidity']))
+                wind.append(float(row['wind_speed']))
 
         if not temps:
             return "No data available."
 
         return (
-            f"Min Temp: {min(temps):.1f}°F\n"
-            f"Max Temp: {max(temps):.1f}°F\n"
-            f"Weather Types: {weather_types}"
+            f"Temp: Min {min(temps):.1f}°F, Max {max(temps):.1f}°F\n"
+            f"Humidity: Avg {sum(humidity)/len(humidity):.1f}%\n"
+            f"Wind Speed: Avg {sum(wind)/len(wind):.1f} mph"
         )
