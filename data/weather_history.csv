@@ -1,9 +1,8 @@
-city,temp,feels_like,humidity,wind_speed,description
-New York,89.53,99.1,61,8.05,clear sky
-New York,90.21,99.61,59,8.05,clear sky
-San diego,66.29,66.61,85,8.05,broken clouds
-Canada,77.94,79,76,8.66,broken clouds
-Ottawa,71.24,71.69,77,1.41,overcast clouds
-Houston,88,100.6,74,10.36,broken clouds
-Pittsburgh,72.55,73.98,95,9.22,overcast clouds
-Des Moines,73.76,74.5,78,10.36,overcast clouds
+date,city,temp,feels_like,humidity,wind_speed,description
+2025-07-09 13:16:29,Chicago,78.96,78.96,71,3.44,broken clouds
+2025-07-09 13:20:35,chicago,78.55,79.39,70,3.44,light rain
+2025-07-09 13:21:46,Chicago,78.55,79.39,70,3.44,light rain
+2025-07-09 13:28:46,chicago,78.55,79.39,70,3.44,light rain
+2025-07-09 13:30:26,new york,88.86,95.58,57,6.91,clear sky
+2025-07-09 13:32:35,new york,88.86,95.58,57,6.91,clear sky
+2025-07-09 13:33:19,new york,88.86,95.58,57,6.91,clear sky

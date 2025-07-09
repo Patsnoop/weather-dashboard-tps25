@@ -16,7 +16,9 @@ def get_weather_data(city):
             "humidity": data["main"]["humidity"],
             "wind_speed": data["wind"]["speed"],
             "description": data["weather"][0]["description"],
-            "icon": data["weather"][0]["icon"]
+            "icon": data["weather"][0]["icon"],
+            "lat": data["coord"]["lat"],
+            "lon": data["coord"]["lon"]
         }
     except Exception as e:
         print(f"API Error: {e}")

@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+from datetime import datetime
 
 DATA_FILE = Path("data/weather_history.csv")
 
@@ -12,12 +13,15 @@ class WeatherStatistics:
             DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
             with open(DATA_FILE, 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(['city', 'temp', 'feels_like', 'humidity', 'wind_speed', 'description'])
+                writer.writerow(['date','city', 'temp', 'feels_like', 'humidity', 'wind_speed', 'description'])
 
     def save_weather(self, data):
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         with open(DATA_FILE, 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([
+                now,
                 data['city'],
                 data['temp'],
                 data['feels_like'],
@@ -32,10 +36,17 @@ class WeatherStatistics:
         wind = []
         with open(DATA_FILE, 'r') as file:
             reader = csv.DictReader(file)
+            if 'temp' not in reader.fieldnames:
+                return "Error: CSV headers are incorrect."
+
             for row in reader:
-                temps.append(float(row['temp']))
-                humidity.append(int(row['humidity']))
-                wind.append(float(row['wind_speed']))
+                try:
+                    temps.append(float(row['temp']))
+                    humidity.append(int(row['humidity']))
+                    wind.append(float(row['wind_speed']))
+                except (ValueError, KeyError):
+                    # Skip bad rows
+                    continue
 
         if not temps:
             return "No data available."
