@@ -6,3 +6,5 @@ date,city,temp,feels_like,humidity,wind_speed,description
 2025-07-09 13:30:26,new york,88.86,95.58,57,6.91,clear sky
 2025-07-09 13:32:35,new york,88.86,95.58,57,6.91,clear sky
 2025-07-09 13:33:19,new york,88.86,95.58,57,6.91,clear sky
+2025-07-09 14:04:51,buffalo,76.68,77.38,71,11.5,overcast clouds
+2025-07-09 14:04:57,new york city,89.76,96.49,55,8.01,clear sky
