@@ -7,6 +7,9 @@ from features.theme import ThemeManager
 from features.graph import TemperatureGraph
 from utils.image_utils import load_icon
 import tkinter as tk
+from features.city_comparison import CityComparison
+from tkinter import filedialog
+import os
 
 
 class WeatherApp:
@@ -66,6 +69,9 @@ class WeatherApp:
         self.refresh_btn = Button(control_frame, text="Refresh Graph", command=self.graph.plot_graph)
         self.refresh_btn.grid(row=0, column=2, padx=5)
 
+        self.compare_btn = Button(control_frame, text="Compare Cities", command=self.compare_cities)
+        self.compare_btn.grid(row=0, column=3, padx=5)
+
         # Load initial empty graph
         self.graph.plot_graph()
 
@@ -109,6 +115,23 @@ class WeatherApp:
     def show_stats(self):
         stats_text = self.stats.get_statistics()
         messagebox.showinfo("Weather Statistics", stats_text)
+
+    def compare_cities(self):
+    # Automatically read all CSV files in the data/ folder
+        data_folder = "data"
+        file_paths = [
+            os.path.join(data_folder, filename)
+            for filename in os.listdir(data_folder)
+            if filename.endswith(".csv")
+        ]
+
+        if not file_paths:
+            messagebox.showinfo("City Comparison", "No CSV files found in the data folder.")
+            return
+
+        comparer = CityComparison(file_paths)
+        comparison_text = comparer.get_top_line_data()
+        messagebox.showinfo("City Comparison", comparison_text)
 
 
 if __name__ == "__main__":
