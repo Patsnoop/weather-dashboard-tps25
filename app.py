@@ -10,6 +10,8 @@ import tkinter as tk
 from features.city_comparison import CityComparison
 from tkinter import filedialog
 import os
+from preferences.preference_manager import PreferenceManager, PREFERENCE_SCHEMA
+from preferences.settings_dialog import SettingsDialog
 
 
 class WeatherApp:
@@ -48,12 +50,17 @@ class WeatherApp:
 
         self.graph = TemperatureGraph(self.graph_frame)
 
+        self.preferences = PreferenceManager()
+
         # Control Buttons
         control_frame = Frame(root)
         control_frame.pack(pady=10)
 
         label = tk.Label(root, text="Select a theme:")
         label.pack(pady=10)
+
+        self.settings_btn = Button(control_frame, text="Settings", command=self.open_settings)
+        self.settings_btn.grid(row=0, column=4, padx=5)
 
         # Theme dropdown
         theme_var = tk.StringVar(value="Light")
@@ -111,6 +118,9 @@ class WeatherApp:
             f"{data['description'].capitalize()}"
         )
         self.weather_label.config(text=info)
+
+    def open_settings(self):
+        SettingsDialog(self.root, self.preferences)
 
     def show_stats(self):
         stats_text = self.stats.get_statistics()

@@ -1,0 +1,30 @@
+{
+  "general": {
+    "temperature_unit": "celsius",
+    "wind_speed_unit": "m/s",
+    "pressure_unit": "inHg",
+    "time_format": "12h"
+  },
+  "location": {
+    "default_location": "New York",
+    "save_recent_locations": true,
+    "max_recent_locations": 10
+  },
+  "display": {
+    "theme": "dark",
+    "show_feels_like": true,
+    "show_humidity": true,
+    "show_uv_index": true,
+    "chart_style": "line"
+  },
+  "data": {
+    "update_interval": 30,
+    "cache_duration": 7,
+    "enable_notifications": false
+  },
+  "advanced": {
+    "api_timeout": 10,
+    "debug_mode": false,
+    "log_api_calls": false
+  }
+}
