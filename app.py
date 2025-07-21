@@ -10,8 +10,8 @@ import tkinter as tk
 from features.city_comparison import CityComparison
 from tkinter import filedialog
 import os
-from preferences.preference_manager import PreferenceManager, PREFERENCE_SCHEMA
-from preferences.settings_dialog import SettingsDialog
+from preferences.preference_manager import PreferenceManager, PREFERENCE_SCHEMA # Add preference import
+from preferences.settings_dialog import SettingsDialog # Add settings import
 
 
 class WeatherApp:
@@ -50,7 +50,13 @@ class WeatherApp:
 
         self.graph = TemperatureGraph(self.graph_frame)
 
+        # W15D1 - add preference manager settings
         self.preferences = PreferenceManager()
+
+        default_location = self.preferences.get("location", "default_location")
+        if default_location:
+            self.city_entry.insert(0, default_location)
+            self.fetch_weather()
 
         # Control Buttons
         control_frame = Frame(root)
@@ -59,6 +65,7 @@ class WeatherApp:
         label = tk.Label(root, text="Select a theme:")
         label.pack(pady=10)
 
+        # W15D1 - add settings button
         self.settings_btn = Button(control_frame, text="Settings", command=self.open_settings)
         self.settings_btn.grid(row=0, column=4, padx=5)
 
@@ -119,6 +126,7 @@ class WeatherApp:
         )
         self.weather_label.config(text=info)
 
+    # W15D1 - add settings dialog
     def open_settings(self):
         SettingsDialog(self.root, self.preferences)
 
