@@ -1,17 +1,17 @@
 {
   "general": {
-    "temperature_unit": "celsius",
-    "wind_speed_unit": "m/s",
+    "temperature_unit": "fahrenheit",
+    "wind_speed_unit": "mph",
     "pressure_unit": "inHg",
     "time_format": "12h"
   },
   "location": {
-    "default_location": "New York",
+    "default_location": "Seattle",
     "save_recent_locations": true,
     "max_recent_locations": 10
   },
   "display": {
-    "theme": "dark",
+    "theme": "light",
     "show_feels_like": true,
     "show_humidity": true,
     "show_uv_index": true,
